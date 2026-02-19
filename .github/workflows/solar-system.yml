@@ -24,9 +24,21 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: 18
+            
+            - name: Previous List
+              run: ls -la
 
             - name: Install Dependecies
               run: npm install
             
             - name: Unit Testing
               run: npm test
+
+            - name: Post List
+              run: ls -la
+
+            - name: Archive Test Result
+              uses: actions/upload-artifact@v3
+              with:
+                name: Mocha-Test-Result
+                path: test-results.xml
